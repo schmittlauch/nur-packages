@@ -11,20 +11,16 @@
 
 stdenv.mkDerivation rec {
   name = "numptyphysics";
-  version = "0.3.6";
+  version = "0.3.7";
   src = fetchFromGitHub {
     owner = "thp";
     repo = "numptyphysics";
     rev = version;
-    sha256 = "03cqzp8wj00kwc5ykhk27vv9jpgcn8b99lkfzj557lmvvyx1rrsd";
+    sha256 = "1g3pl5ghan7g173zgwz0jkm3swy2r00gng392w25fsj5lf1g1v5x";
   };
   nativeBuildInputs = [ pkgconfig ];
   buildInputs = [ SDL2 SDL2_image SDL2_ttf glib libGL ];
   enableParallelBuilding = true;
-  patches = [
-    # always build against libGL, as upstream check depends on FHS lib locations
-    ./use-libgl.patch
-  ];
   installFlags = [ "DESTDIR=$(out)" "PREFIX=''" ];
 
   meta = {
