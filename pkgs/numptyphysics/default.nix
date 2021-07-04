@@ -1,9 +1,9 @@
 { stdenv
 , fetchFromGitHub
 , lib
-, SDL2
-, SDL2_image
-, SDL2_ttf
+, SDL
+, SDL_image
+, SDL_ttf
 , libGL
 , glib
 , pkgconfig
@@ -19,9 +19,9 @@ stdenv.mkDerivation rec {
     sha256 = "1g3pl5ghan7g173zgwz0jkm3swy2r00gng392w25fsj5lf1g1v5x";
   };
   nativeBuildInputs = [ pkgconfig ];
-  buildInputs = [ SDL2 SDL2_image SDL2_ttf glib libGL ];
+  buildInputs = [ SDL SDL_image SDL_ttf glib libGL ];
   enableParallelBuilding = true;
-  installFlags = [ "DESTDIR=$(out)" "PREFIX=''" ];
+  makeFlags = [ "PLATFORM=sdl1" "V=1" "DESTDIR=$(out)" "PREFIX=''" ];
 
   meta = {
     maintainers = [ lib.maintainers.schmittlauch ];
